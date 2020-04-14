@@ -1,23 +1,19 @@
 package com.project.healthcare.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Hospital {
+
     private int id;
     private String name;
     private String type;
     private String description;
     private String address;
-    private int phone;
+    private String phone;
 
-    //Constructor
     public Hospital(){}
-    public Hospital(String name, String type, String description, String address, int phone) {
-        this.name = name;
-        this.type = type;
-        this.description = description;
-        this.address = address;
-        this.phone = phone;
-    }
-    //Getters & setters
+
     public int getId() {
         return id;
     }
@@ -58,11 +54,11 @@ public class Hospital {
         this.address = address;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 }

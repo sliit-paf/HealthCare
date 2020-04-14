@@ -1,17 +1,18 @@
 package com.project.healthcare.controller;
 
-import java.util.ArrayList;
+import java.util.List;
+
 import com.project.healthcare.model.Hospital;
 
 public interface IHospitalController {
 
-    public String createHospital(Hospital h);
+    public void createHospital(Hospital h);
 
-    public Hospital getHospital(String hospitalId);
+    public Hospital getHospital(int id);
 
-    public ArrayList<Hospital> getHospitals();
+    public List<Hospital> getHospitals();
 
-    public Hospital updateHospital(String hospitalId, Hospital id);
+    public Hospital updateHospital(int id, Hospital new_id);
 
-    public String deleteHospital(String hospitalId);
+    public String deleteHospital(int id);
 }
