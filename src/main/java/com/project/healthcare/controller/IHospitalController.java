@@ -11,5 +11,7 @@ public interface IHospitalController {
 
     public ArrayList<Hospital> getHospitals();
 
-    public Hospital updateHospital(String hospitalid, Hospital id);
+    public Hospital updateHospital(String hospitalId, Hospital id);
+
+    public String deleteHospital(String hospitalId);
 }

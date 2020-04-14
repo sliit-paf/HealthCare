@@ -21,7 +21,12 @@ public class HospitalController implements IHospitalController{
     }
 
     @Override
-    public Hospital updateHospital(String hospitalid, Hospital id) {
+    public Hospital updateHospital(String hospitalId, Hospital id) {
+        return null;
+    }
+
+    @Override
+    public String deleteHospital(String hospitalId) {
         return null;
     }
 }
