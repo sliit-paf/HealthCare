@@ -1,6 +1,6 @@
 package com.project.healthcare.model;
 
-public class hospital {
+public class Hospital {
     private int id;
     private String name;
     private String type;
@@ -9,8 +9,8 @@ public class hospital {
     private int phone;
 
     //Constructor
-    public hospital(){}
-    public hospital(String name, String type, String description, String address, int phone) {
+    public Hospital(){}
+    public Hospital(String name, String type, String description, String address, int phone) {
         this.name = name;
         this.type = type;
         this.description = description;
