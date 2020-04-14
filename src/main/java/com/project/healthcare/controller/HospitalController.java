@@ -23,7 +23,7 @@ public class HospitalController implements IHospitalController{
     }
 
     @Override
-    public List<Hospital> getHospitals(){
+    public List<Hospital> getHospitals() {
         List<Hospital> hospitals = new ArrayList<>();
         String sql = "select * from hospital";
         try {
@@ -37,17 +37,16 @@ public class HospitalController implements IHospitalController{
                 h.setDescription(rs.getString(4));
                 h.setAddress(rs.getString(5));
                 h.setPhone(rs.getString(6));
-
                 hospitals.add(h);
             }
-        }catch (Exception e){
+        } catch (SQLException e){
             System.out.println(e);
         }
         return hospitals;
     }
 
     @Override
-    public void createHospital(Hospital h) {
+    public void createHospital(Hospital h){
         String sql = "insert into hospital values (?,?,?,?,?,?)";
 
         try {
@@ -59,10 +58,8 @@ public class HospitalController implements IHospitalController{
             st.setString(5, h.getAddress());
             st.setString(6, h.getPhone());
             st.executeUpdate();
-            hospitals.add(h);
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e){
+            System.out.println(e);
         }
     }
 
@@ -80,10 +77,8 @@ public class HospitalController implements IHospitalController{
                 h.setDescription(rs.getString(4));
                 h.setAddress(rs.getString(5));
                 h.setPhone(rs.getString(6));
-
-                hospitals.add(h);
             }
-        }catch (Exception e){
+        } catch (SQLException e){
             System.out.println(e);
         }
         return h;
