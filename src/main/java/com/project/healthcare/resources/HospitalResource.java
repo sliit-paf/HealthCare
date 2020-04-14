@@ -20,6 +20,34 @@ public class HospitalResource {
     }
 
     @GET
+    @Path("table")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getHospitalsTable() {
+        System.out.println("getHospitals called");
+        String output = "<table border=\"1\"><tr><th>ID</th><th>Name</th><th>Type</th><th>Description</th><th>Address</th><th>Phone</th></tr>";
+        List<Hospital> lsits = repo.getHospitals();
+        for (Hospital h: lsits
+             ) {
+            String id = Integer.toString(h.getId());
+            String name = h.getName();
+            String type = h.getType();
+            String description = h.getDescription();
+            String address = h.getAddress();
+            String phone = h.getPhone();
+            output += "<tr><td>" + id + "</td>";
+            output += "<td>" + name + "</td>";
+            output += "<td>" + type + "</td>";
+            output += "<td>" + description + "</td>";
+            output += "<td>" + address + "</td>";
+            output += "<td>" + phone + "</td></tr>";
+        }
+            output += "</table>";
+            return output;
+        }
+
+
+
+    @GET
     @Path("hospital/{id}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Hospital getHospital(@PathParam("id") int id) {
@@ -29,9 +57,97 @@ public class HospitalResource {
 
     @POST
     @Path("hospital")
+    @Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     public Hospital createHospital(Hospital h){
         System.out.println(h);
         repo.createHospital(h);
         return h;
+    }
+
+    @POST
+    @Path("form")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String createHospitalForm(@FormParam("id") int id,
+                                     @FormParam("name") String name,
+                                     @FormParam("type") String type,
+                                     @FormParam("description") String description,
+                                     @FormParam("address") String address,
+                                     @FormParam("phone") String phone
+                                       ){
+
+        Hospital h = new Hospital();
+        h.setId(id);
+        if(h.getId() != 0) {
+            h.setName(name);
+            h.setType(type);
+            h.setDescription(description);
+            h.setAddress(address);
+            h.setPhone(phone);
+            System.out.println(h);
+            repo.createHospital(h);
+            if (repo.getHospital(id).getId() != 0) {
+                return "Succesfully Created";
+            } else {
+                return "Error";
+            }
+        }else{
+            return "ID is REQUIRED";
+        }
+
+    }
+
+    @PUT
+    @Path("form")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String updateHospitalForm(@FormParam("id") int id,
+                                     @FormParam("name") String name,
+                                     @FormParam("type") String type,
+                                     @FormParam("description") String description,
+                                     @FormParam("address") String address,
+                                     @FormParam("phone") String phone
+    ){
+        Hospital h = new Hospital();
+        h.setId(id);
+        if (h.getId() != 0) {
+            h.setName(name);
+            h.setType(type);
+            h.setDescription(description);
+            h.setAddress(address);
+            h.setPhone(phone);
+            System.out.println(h);
+            repo.updateHospital(h);
+            if (repo.getHospital(id).getId() != 0) {
+                return "Succesfully Updated";
+            } else {
+                return "Error";
+            }
+        }else{
+            return "ID is REQUIRED";
+        }
+
+    }
+
+    @PUT
+    @Path("hospital")
+    @Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+    public Hospital updateHospital(Hospital h){
+        System.out.println(h);
+        if(repo.getHospital(h.getId()).getId()== 0){
+            repo.createHospital(h);
+        }
+        else {
+            repo.updateHospital(h);
+        }
+        return h;
+    }
+
+    @DELETE
+    @Path("hospital/{id}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String deleteHospital(@PathParam("id") int id){
+        Hospital h = repo.getHospital(id);
+        return repo.deleteHospital(id);
     }
 }

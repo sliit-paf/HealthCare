@@ -5,12 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
 
+
 public class HospitalController implements IHospitalController{
 
     List<Hospital> hospitals;
+
     Connection con = null;
 
     public HospitalController(){
+
         String url = "jdbc:mysql://127.0.0.1:3306/healthcare";
         String username = "root";
         String password = "";
@@ -85,16 +88,36 @@ public class HospitalController implements IHospitalController{
     }
 
     @Override
-    public Hospital updateHospital(int id, Hospital new_id) {
-        return null;
+    public void updateHospital(Hospital h) {
+        String sql = "update hospital set name=?, type=?, description=?, address=?, phone=? where id=?";
+
+        try {
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setString(1, h.getName());
+            st.setString(2, h.getType());
+            st.setString(3, h.getDescription());
+            st.setString(4, h.getAddress());
+            st.setString(5, h.getPhone());
+            st.setInt(6, h.getId());
+            st.executeUpdate();
+        } catch (SQLException e){
+            System.out.println(e);
+        }
     }
 
     @Override
     public String deleteHospital(int id) {
-        return null;
+        String sql = "delete from hospital where id=?";
+        String output;
+        try {
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setInt(1, id);
+            st.executeUpdate();
+            output = "Successfully Deleted";
+        } catch (SQLException e){
+            System.out.println(e);
+            output = "Error";
+        }
+            return output;
     }
-
-    //MYSQL
-    //jdbc
-
 }
