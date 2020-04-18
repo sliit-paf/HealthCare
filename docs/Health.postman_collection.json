@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "62e460f7-382b-449b-87e8-5688270522d6",
+		"name": "Health",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "save-appointment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\":1,\n\t\"patientId\":1,\n\t\"hospiatlId\":1,\n\t\"clinicId\":1,\n\t\"docId\":1,\n\t\"startTime\":\"2018-01-04 05:45\",\n\t\"endTime\":\"2018-01-04 10:45\",\n\t\"status\":\"ACTIVE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/HealthCare/webapi/appointments/appointment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HealthCare",
+						"webapi",
+						"appointments",
+						"appointment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-all-appointments",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/HealthCare/webapi/appointments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HealthCare",
+						"webapi",
+						"appointments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "table-appointments",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/HealthCare/webapi/appointments/table",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HealthCare",
+						"webapi",
+						"appointments",
+						"table"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-appointments-byID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/HealthCare/webapi/appointments/appointment/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HealthCare",
+						"webapi",
+						"appointments",
+						"appointment",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-appointment",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\":1,\n\t\"patientId\":1,\n\t\"hospiatlId\":1,\n\t\"clinicId\":1,\n\t\"docId\":1,\n\t\"startTime\":\"2018-01-04 05:45\",\n\t\"endTime\":\"2018-01-04 10:45\",\n\t\"status\":\"DONE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/HealthCare/webapi/appointments/appointment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HealthCare",
+						"webapi",
+						"appointments",
+						"appointment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-appointment",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/HealthCare/webapi/appointments/appointment/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HealthCare",
+						"webapi",
+						"appointments",
+						"appointment",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
